@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud/StatsCounterBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hud/LifeCounter.gd" type="Script" id=2]
+
+[node name="LifeCounter" instance=ExtResource( 1 )]
+margin_left = -8.0
+margin_right = 40.0
+script = ExtResource( 2 )
+
+[node name="Icon" parent="." index="0"]
+margin_left = -15.896
+margin_right = 4.104
+
+[node name="Label" parent="." index="1"]
+margin_right = 13.0
+text = "0"

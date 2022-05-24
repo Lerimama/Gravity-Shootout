@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud/ProgressBar.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends HBoxContainer
+
+var maximum_value = 5
+var current_health = 0
+
+func initialize(maximum):
+	maximum_value = maximum
+	$TextureProgress.max_value = maximum
+
+func _on_hud_energija_changed(health):
+	print(\"YEAH!!!!!\")
+	animate_bar_value(current_health, health)
+	current_health = health	# pomembno zaporedje
+	# $TextureProgress.value = health	# tole gre v animacijo
+	# $Count/Number.text = \"%s / s%\" [health, maximum_value]	# če bil zraven še teksovna sprememba
+	
+func animate_bar_value(start, end):
+	$Tween.interpolate_property($TextureProgress, \"value\", start, end, 0.6, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	$Tween.interpolate_method(self, \"set_count_text\", start, end, 0.4, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	
+	$Tween.start()
+	
+	if end < start:	# če je izguba energije
+		$TextureProgress.modulate = Color.red
+#		$AnimationPlayer.play(\"animacija\")
+		pass
+
+func set_count_text (value):
+	
+	$Label.text = str(round(value)) + \"/\" + str(maximum_value)	# zaokrožujem ker tole vrednost podaja tween in so na ful velik decimalk
+	
+	
+	return
+	
+"
+
+[node name="EnergyBar" instance=ExtResource( 1 )]
+margin_right = 114.0
+rect_min_size = Vector2( 32, 0 )
+script = SubResource( 1 )
+
+[node name="TextureProgress" parent="." index="1"]
+margin_right = 27.0
+margin_bottom = 8.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+
+[node name="Tween" type="Tween" parent="." index="2"]

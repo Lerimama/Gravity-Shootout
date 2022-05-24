@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud/ProgressBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hud/EnergyProgressBar.gd" type="Script" id=2]
+
+[node name="EnergyProgressBar" instance=ExtResource( 1 )]
+anchor_top = 0.013
+anchor_bottom = 0.013
+margin_top = -9.984
+margin_bottom = 10.016
+script = ExtResource( 2 )
+
+[node name="TextureProgress" parent="." index="1"]
+visible = false
+texture_under = null
+
+[node name="Tween" type="Tween" parent="." index="2"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud/ScoreCounter.gd" type="Script" id=1]
+[ext_resource path="res://hud/StatsCounterBase.tscn" type="PackedScene" id=2]
+
+[node name="ScoreCounter" instance=ExtResource( 2 )]
+margin_right = 51.0
+script = ExtResource( 1 )
+
+[node name="Icon" parent="." index="0"]
+visible = false
+texture = null
+
+[node name="Label" parent="." index="1"]
+margin_right = 52.0
+text = "0000"

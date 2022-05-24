@@ -1,0 +1,255 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://menu/configure_controller/ConfigureControllerMenu.gd" type="Script" id=1]
+[ext_resource path="res://hud/mat/Snowstorm.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu/configure_player/ActionBlock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://materiali/default_theme.tres" type="Theme" id=4]
+[ext_resource path="res://menu/configure_controller/ControllerLine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menu/configure_controller/ControllerMenu.gd" type="Script" id=7]
+[ext_resource path="res://menu/configure_player/KeySelect.gd" type="Script" id=9]
+[ext_resource path="res://materiali/fonts/Snowstorm.otf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=13]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 10 )
+
+[node name="ConfigureControllerMenu" type="Control"]
+margin_left = -35.0
+margin_top = -35.0
+margin_right = 989.0
+margin_bottom = 733.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 223.0, 382.0, 534.0, 268.0, 193.0, 600.0 ],
+"_edit_vertical_guides_": [ 512.0, 262.0, 766.0 ]
+}
+
+[node name="undi" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.901961 )
+margin_right = 1024.0
+margin_bottom = 768.0
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -219.0
+margin_top = 64.0
+margin_right = 225.0
+margin_bottom = 97.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 13 )
+text = "CONFIGURE CONTROLLERS"
+align = 1
+uppercase = true
+
+[node name="Table" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 156.0
+margin_right = 250.0
+margin_bottom = 700.0
+custom_constants/separation = 8
+
+[node name="TableLine" type="HBoxContainer" parent="Table"]
+margin_right = 410.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 410, 0 )
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Table/TableLine"]
+margin_right = 203.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+theme = ExtResource( 4 )
+text = "CONTROLLER"
+
+[node name="Label2" type="Label" parent="Table/TableLine"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+theme = ExtResource( 4 )
+text = "ASSIGNED KEYS"
+align = 2
+
+[node name="HSeparator" type="HSeparator" parent="Table"]
+margin_top = 28.0
+margin_right = 500.0
+margin_bottom = 65.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_constants/separation = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Table"]
+margin_top = 73.0
+margin_right = 500.0
+margin_bottom = 453.0
+rect_min_size = Vector2( 0, 380 )
+size_flags_vertical = 0
+
+[node name="ControllerList" type="VBoxContainer" parent="Table/ScrollContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 14
+
+[node name="ControllerLine" parent="Table/ScrollContainer/ControllerList" instance=ExtResource( 5 )]
+visible = false
+
+[node name="HSeparator2" type="HSeparator" parent="Table"]
+margin_top = 461.0
+margin_right = 500.0
+margin_bottom = 498.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_constants/separation = 24
+
+[node name="BtnLine" type="HBoxContainer" parent="Table"]
+margin_top = 522.0
+margin_right = 500.0
+margin_bottom = 544.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+alignment = 1
+
+[node name="QuitBtn" type="Button" parent="Table/BtnLine" groups=["menu_btns"]]
+margin_right = 166.0
+margin_bottom = 22.0
+focus_neighbour_right = NodePath("../AddBtn")
+focus_next = NodePath("../AddBtn")
+size_flags_horizontal = 2
+size_flags_vertical = 8
+theme = ExtResource( 4 )
+text = "< TO MAIN MENU"
+align = 0
+
+[node name="AddBtn" type="Button" parent="Table/BtnLine" groups=["menu_btns"]]
+margin_left = 297.0
+margin_right = 500.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../QuitBtn")
+focus_previous = NodePath("../QuitBtn")
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource( 4 )
+text = "+  ADD CONTROLLER"
+align = 2
+
+[node name="ControllerMenu" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
+script = ExtResource( 7 )
+
+[node name="Title" type="Label" parent="ControllerMenu"]
+margin_left = 343.0
+margin_top = 165.0
+margin_right = 681.0
+margin_bottom = 198.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 14 )
+text = "PLAYER CONTROLER"
+align = 1
+uppercase = true
+
+[node name="lajna" type="ColorRect" parent="ControllerMenu"]
+margin_left = 262.0
+margin_top = 223.0
+margin_right = 762.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ActionMap" type="HBoxContainer" parent="ControllerMenu"]
+margin_left = 282.0
+margin_top = 329.0
+margin_right = 748.0
+margin_bottom = 435.0
+grow_horizontal = 2
+custom_constants/separation = -4
+alignment = 1
+
+[node name="ActionBlock" parent="ControllerMenu/ActionMap" instance=ExtResource( 3 )]
+visible = false
+margin_left = 188.0
+margin_top = 16.0
+margin_right = 278.0
+margin_bottom = 106.0
+
+[node name="KeySelect" type="Label" parent="ControllerMenu"]
+modulate = Color( 1, 1, 1, 0.54902 )
+margin_left = 357.0
+margin_top = 459.0
+margin_right = 667.0
+margin_bottom = 472.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 15 )
+text = "IZBERI TIPKO"
+align = 1
+valign = 1
+script = ExtResource( 9 )
+
+[node name="lajna2" type="ColorRect" parent="ControllerMenu"]
+margin_left = 262.0
+margin_top = 534.0
+margin_right = 762.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BtnLine" type="HBoxContainer" parent="ControllerMenu"]
+margin_left = 263.0
+margin_top = 566.0
+margin_right = 764.0
+margin_bottom = 592.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CancelBtn" type="Button" parent="ControllerMenu/BtnLine" groups=["submenu_btns"]]
+margin_right = 78.0
+margin_bottom = 22.0
+focus_neighbour_right = NodePath("../ConfirmBtn")
+size_flags_vertical = 2
+theme = ExtResource( 4 )
+text = "CANCEL"
+flat = true
+align = 0
+
+[node name="ConfirmBtn" type="Button" parent="ControllerMenu/BtnLine" groups=["submenu_btns"]]
+margin_left = 409.0
+margin_right = 501.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../CancelBtn")
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 4 )
+text = "CONFIRM"
+flat = true
+align = 2
+
+[connection signal="pressed" from="Table/BtnLine/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[connection signal="pressed" from="Table/BtnLine/AddBtn" to="." method="_on_AddBtn_pressed"]
+[connection signal="Editing_canceled" from="ControllerMenu" to="." method="_on_ControllerMenu_Editing_canceled"]
+[connection signal="Editing_confirmed" from="ControllerMenu" to="." method="_on_ControllerMenu_Editing_confirmed"]
+[connection signal="pressed" from="ControllerMenu/BtnLine/CancelBtn" to="ControllerMenu" method="_on_CancelBtn_pressed"]
+[connection signal="pressed" from="ControllerMenu/BtnLine/ConfirmBtn" to="ControllerMenu" method="_on_ConfirmBtn_pressed"]

@@ -1,0 +1,24 @@
+Godot Engine v3.4.2.stable.flathub.45eaa2daf - https://godotengine.org
+OpenGL ES 3.0 Renderer: AMD RENOIR (DRM 3.42.0, 5.15.15-76051515-generic, LLVM 12.0.1)
+OpenGL ES Batching: ON
+ 
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v3/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Dodge_the_creeps/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/tale-of-two-sides-main/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v2/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v1/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/exercise/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/end/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/start/project.godot
+Scanning projects at: /home/lerimama/Projekti/gejmking
+Found 9 projects.
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v3/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Dodge_the_creeps/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/tale-of-two-sides-main/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v2/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Gravity_0.1/v1/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/exercise/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/end/project.godot
+Project is missing: /home/lerimama/Projekti/gejmking/Procedural_tilemaps/start/project.godot
+ERROR: Condition "default_certs != nullptr" is true.
+   at: load_default_certificates (modules/mbedtls/crypto_mbedtls.cpp:314) - Condition "default_certs != nullptr" is true.

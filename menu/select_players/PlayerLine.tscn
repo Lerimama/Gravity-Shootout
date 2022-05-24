@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://materiali/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/select_players/PlayerLine.gd" type="Script" id=2]
+
+[node name="PlayerLine" type="HBoxContainer"]
+margin_right = 500.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 500, 48 )
+size_flags_horizontal = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 43.0, 24.0 ],
+"_edit_vertical_guides_": [ 1024.0, 926.0, 449.0, 400.0, 801.0 ]
+}
+
+[node name="PlayerName" type="Label" parent="."]
+margin_right = 164.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "name"
+
+[node name="ControllerBtn" type="OptionButton" parent="." groups=["line_btns"]]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 22.0
+size_flags_horizontal = 11
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+toggle_mode = false
+action_mode = 1
+text = "kwa zej"
+align = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ActivateBtn" type="Button" parent="." groups=["line_btns"]]
+margin_left = 461.0
+margin_right = 500.0
+margin_bottom = 22.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0 )
+text = "OUT"
+flat = true
+
+[connection signal="item_selected" from="ControllerBtn" to="." method="_on_ControllerBtn_item_selected"]
+[connection signal="pressed" from="ControllerBtn" to="." method="_on_ControllerBtn_pressed"]
+[connection signal="pressed" from="ActivateBtn" to="." method="_on_ActivateBtn_pressed"]

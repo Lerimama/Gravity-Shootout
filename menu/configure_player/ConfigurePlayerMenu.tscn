@@ -1,0 +1,547 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://materiali/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/configure_player/PlayerLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud/mat/Snowstorm.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://materiali/avatars/avatar1.png" type="Texture" id=4]
+[ext_resource path="res://menu/configure_player/ConfigurePlayerMenu.gd" type="Script" id=5]
+[ext_resource path="res://menu/configure_player/NameMenu.gd" type="Script" id=8]
+[ext_resource path="res://menu/configure_player/AvatarMenu.gd" type="Script" id=9]
+[ext_resource path="res://menu/configure_player/ColorMenu.gd" type="Script" id=10]
+[ext_resource path="res://menu/configure_player/MapCharacter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://menu/configure_player/Avatar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://menu/configure_player/ColorSq.tscn" type="PackedScene" id=14]
+[ext_resource path="res://menu/configure_player/KeySelect.gd" type="Script" id=17]
+[ext_resource path="res://materiali/fonts/Snowstorm.otf" type="DynamicFontData" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 18 )
+
+[node name="ConfigurePlayerMenu" type="Control"]
+margin_right = 1024.0
+margin_bottom = 768.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 223.0, 382.0, 534.0, 276.0, 193.0, 599.0 ],
+"_edit_vertical_guides_": [ 512.0, 262.0, 766.0 ]
+}
+
+[node name="undi" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.901961 )
+margin_right = 1024.0
+margin_bottom = 768.0
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -165.0
+margin_top = 64.0
+margin_right = 165.0
+margin_bottom = 97.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "CONFIGURE PLAYER"
+align = 1
+uppercase = true
+
+[node name="Table" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -251.0
+margin_top = 156.0
+margin_right = 254.0
+margin_bottom = 658.0
+rect_min_size = Vector2( 500, 0 )
+custom_constants/separation = 8
+
+[node name="TableLine2" type="HBoxContainer" parent="Table"]
+margin_right = 410.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 410, 0 )
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Table/TableLine2"]
+margin_right = 203.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "PLAYER"
+
+[node name="Label2" type="Label" parent="Table/TableLine2"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "LOOK N FEEL"
+align = 2
+
+[node name="HSeparator" type="HSeparator" parent="Table"]
+margin_top = 28.0
+margin_right = 505.0
+margin_bottom = 52.0
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_constants/separation = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Table"]
+margin_top = 60.0
+margin_right = 505.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 380 )
+size_flags_vertical = 0
+
+[node name="PlayerList" type="VBoxContainer" parent="Table/ScrollContainer"]
+margin_right = 505.0
+size_flags_horizontal = 3
+custom_constants/separation = 14
+
+[node name="PlayerLine" parent="Table/ScrollContainer/PlayerList" instance=ExtResource( 2 )]
+visible = false
+margin_left = 2.0
+margin_right = 502.0
+
+[node name="HSeparator2" type="HSeparator" parent="Table"]
+margin_top = 448.0
+margin_right = 505.0
+margin_bottom = 472.0
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_constants/separation = 24
+
+[node name="BtnLine" type="HBoxContainer" parent="Table"]
+margin_top = 480.0
+margin_right = 505.0
+margin_bottom = 502.0
+size_flags_horizontal = 5
+size_flags_vertical = 8
+alignment = 1
+
+[node name="QuitBtn" type="Button" parent="Table/BtnLine" groups=["menu_btns"]]
+margin_right = 172.0
+margin_bottom = 22.0
+focus_neighbour_right = NodePath("../AddBtn")
+focus_next = NodePath("../AddBtn")
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "<  TO MAIN MENU"
+align = 0
+
+[node name="AddBtn" type="Button" parent="Table/BtnLine" groups=["menu_btns"]]
+margin_left = 356.0
+margin_right = 505.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../QuitBtn")
+focus_previous = NodePath("../QuitBtn")
+size_flags_vertical = 8
+theme = ExtResource( 1 )
+text = "+  ADD PLAYER"
+align = 2
+
+[node name="NameMenu" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
+script = ExtResource( 8 )
+
+[node name="Title" type="Label" parent="NameMenu"]
+margin_left = 395.0
+margin_top = 165.0
+margin_right = 627.0
+margin_bottom = 198.0
+size_flags_horizontal = 0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAYER NAME"
+align = 1
+uppercase = true
+
+[node name="lajna" type="ColorRect" parent="NameMenu"]
+margin_left = 262.0
+margin_top = 223.0
+margin_right = 762.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Table" type="VBoxContainer" parent="NameMenu"]
+margin_left = 414.0
+margin_top = 277.0
+margin_right = 610.0
+margin_bottom = 511.0
+grow_horizontal = 2
+size_flags_horizontal = 5
+custom_constants/separation = 10
+
+[node name="Name" type="HBoxContainer" parent="NameMenu/Table"]
+margin_left = 51.0
+margin_right = 144.0
+margin_bottom = 41.0
+size_flags_horizontal = 6
+custom_constants/separation = 8
+alignment = 1
+
+[node name="NameCharacter1" type="Button" parent="NameMenu/Table/Name"]
+margin_right = 25.0
+margin_bottom = 41.0
+size_flags_horizontal = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+flat = true
+
+[node name="NameCharacter2" type="Button" parent="NameMenu/Table/Name"]
+margin_left = 33.0
+margin_right = 59.0
+margin_bottom = 41.0
+size_flags_horizontal = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "C"
+flat = true
+
+[node name="NameCharacter3" type="Button" parent="NameMenu/Table/Name"]
+margin_left = 67.0
+margin_right = 93.0
+margin_bottom = 41.0
+size_flags_horizontal = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "E"
+flat = true
+
+[node name="_ _ _" type="HBoxContainer" parent="NameMenu/Table"]
+visible = false
+margin_left = 45.0
+margin_top = 49.0
+margin_right = 151.0
+margin_bottom = 51.0
+size_flags_horizontal = 4
+custom_constants/separation = 20
+alignment = 1
+
+[node name="lajna2" type="ColorRect" parent="NameMenu/Table/_ _ _"]
+margin_right = 22.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 22, 2 )
+size_flags_vertical = 0
+
+[node name="lajna3" type="ColorRect" parent="NameMenu/Table/_ _ _"]
+margin_left = 42.0
+margin_right = 64.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 22, 2 )
+size_flags_vertical = 0
+
+[node name="lajna4" type="ColorRect" parent="NameMenu/Table/_ _ _"]
+margin_left = 84.0
+margin_right = 106.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 22, 2 )
+size_flags_vertical = 0
+
+[node name="HSeparator" type="HSeparator" parent="NameMenu/Table"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 51.0
+margin_right = 196.0
+margin_bottom = 63.0
+custom_constants/separation = 12
+
+[node name="CharMap" type="GridContainer" parent="NameMenu/Table"]
+margin_top = 73.0
+margin_right = 196.0
+margin_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 8
+
+[node name="MapCharacter" parent="NameMenu/Table/CharMap" instance=ExtResource( 12 )]
+visible = false
+margin_right = 16.0
+margin_bottom = 26.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="KeySelect" type="Label" parent="NameMenu"]
+visible = false
+modulate = Color( 1, 1, 1, 0.54902 )
+margin_left = 357.0
+margin_top = 509.0
+margin_right = 667.0
+margin_bottom = 522.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+text = "IZBERI  "
+align = 1
+valign = 1
+script = ExtResource( 17 )
+
+[node name="lajna2" type="ColorRect" parent="NameMenu"]
+margin_left = 262.0
+margin_top = 533.0
+margin_right = 762.0
+margin_bottom = 535.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BtnLine" type="HBoxContainer" parent="NameMenu"]
+margin_left = 263.0
+margin_top = 566.0
+margin_right = 767.0
+margin_bottom = 592.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="CancelBtn" type="Button" parent="NameMenu/BtnLine" groups=["submenu_btns"]]
+margin_right = 78.0
+margin_bottom = 22.0
+focus_neighbour_right = NodePath("../ConfirmBtn")
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CANCEL"
+flat = true
+align = 0
+
+[node name="ConfirmBtn" type="Button" parent="NameMenu/BtnLine" groups=["submenu_btns"]]
+margin_left = 412.0
+margin_right = 504.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../CancelBtn")
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CONFIRM"
+flat = true
+align = 2
+
+[node name="AvatarMenu" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
+script = ExtResource( 9 )
+
+[node name="Title" type="Label" parent="AvatarMenu"]
+margin_left = 381.0
+margin_top = 165.0
+margin_right = 640.0
+margin_bottom = 198.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAYER AVATAR"
+align = 1
+uppercase = true
+
+[node name="CurrentAvatar" type="TextureRect" parent="AvatarMenu"]
+margin_left = 472.0
+margin_top = 277.0
+margin_right = 552.0
+margin_bottom = 357.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="lajna" type="ColorRect" parent="AvatarMenu"]
+margin_left = 262.0
+margin_top = 223.0
+margin_right = 762.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="AvatarMap" type="GridContainer" parent="AvatarMenu"]
+margin_left = 405.0
+margin_top = 397.0
+margin_right = 618.0
+margin_bottom = 437.0
+grow_horizontal = 2
+columns = 8
+
+[node name="Avatar" parent="AvatarMenu/AvatarMap" instance=ExtResource( 13 )]
+visible = false
+
+[node name="lajna2" type="ColorRect" parent="AvatarMenu"]
+margin_left = 262.0
+margin_top = 534.0
+margin_right = 762.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BtnLine" type="HBoxContainer" parent="AvatarMenu"]
+margin_left = 263.0
+margin_top = 565.0
+margin_right = 764.0
+margin_bottom = 591.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CancelBtn" type="Button" parent="AvatarMenu/BtnLine" groups=["submenu_btns"]]
+margin_right = 78.0
+margin_bottom = 22.0
+focus_neighbour_right = NodePath("../ConfirmBtn")
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CANCEL"
+flat = true
+align = 0
+
+[node name="ConfirmBtn" type="Button" parent="AvatarMenu/BtnLine" groups=["submenu_btns"]]
+margin_left = 409.0
+margin_right = 501.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../CancelBtn")
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CONFIRM"
+flat = true
+align = 2
+
+[node name="ColorMenu" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
+script = ExtResource( 10 )
+
+[node name="Title" type="Label" parent="ColorMenu"]
+margin_left = 381.0
+margin_top = 165.0
+margin_right = 640.0
+margin_bottom = 198.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAYER COLOR"
+align = 1
+uppercase = true
+
+[node name="CurrentColor" type="ColorRect" parent="ColorMenu"]
+margin_left = 472.0
+margin_top = 277.0
+margin_right = 552.0
+margin_bottom = 357.0
+
+[node name="lajna" type="ColorRect" parent="ColorMenu"]
+margin_left = 262.0
+margin_top = 223.0
+margin_right = 762.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ColorMap" type="GridContainer" parent="ColorMenu"]
+margin_left = 492.0
+margin_top = 397.0
+margin_right = 532.0
+margin_bottom = 437.0
+grow_horizontal = 2
+columns = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorSq" parent="ColorMenu/ColorMap" instance=ExtResource( 14 )]
+visible = false
+size_flags_horizontal = 4
+
+[node name="lajna2" type="ColorRect" parent="ColorMenu"]
+margin_left = 262.0
+margin_top = 534.0
+margin_right = 762.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 500, 2 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BtnLine" type="HBoxContainer" parent="ColorMenu"]
+margin_left = 263.0
+margin_top = 566.0
+margin_right = 764.0
+margin_bottom = 592.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="CancelBtn" type="Button" parent="ColorMenu/BtnLine" groups=["submenu_btns"]]
+margin_right = 78.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../ConfirmBtn")
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CANCEL"
+flat = true
+align = 0
+
+[node name="ConfirmBtn" type="Button" parent="ColorMenu/BtnLine" groups=["submenu_btns"]]
+margin_left = 409.0
+margin_right = 501.0
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../CancelBtn")
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "CONFIRM"
+flat = true
+align = 2
+
+[connection signal="pressed" from="Table/BtnLine/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[connection signal="pressed" from="Table/BtnLine/AddBtn" to="." method="_on_AddBtn_pressed"]
+[connection signal="Editing_canceled" from="NameMenu" to="." method="_on_Editing_canceled"]
+[connection signal="Name_change_confirmed" from="NameMenu" to="." method="_on_Name_change_confirmed"]
+[connection signal="pressed" from="NameMenu/Table/Name/NameCharacter1" to="NameMenu" method="_on_NameCharacter1_pressed"]
+[connection signal="pressed" from="NameMenu/Table/Name/NameCharacter2" to="NameMenu" method="_on_NameCharacter2_pressed"]
+[connection signal="pressed" from="NameMenu/Table/Name/NameCharacter3" to="NameMenu" method="_on_NameCharacter3_pressed"]
+[connection signal="pressed" from="NameMenu/BtnLine/CancelBtn" to="NameMenu" method="_on_CancelBtn_pressed"]
+[connection signal="pressed" from="NameMenu/BtnLine/ConfirmBtn" to="NameMenu" method="_on_ConfirmBtn_pressed"]
+[connection signal="Avatar_change_confirmed" from="AvatarMenu" to="." method="_on_Avatar_change_confirmed"]
+[connection signal="Editing_canceled" from="AvatarMenu" to="." method="_on_Editing_canceled"]
+[connection signal="pressed" from="AvatarMenu/BtnLine/CancelBtn" to="AvatarMenu" method="_on_CancelBtn_pressed"]
+[connection signal="pressed" from="AvatarMenu/BtnLine/ConfirmBtn" to="AvatarMenu" method="_on_ConfirmBtn_pressed"]
+[connection signal="Color_change_confirmed" from="ColorMenu" to="." method="_on_Color_change_confirmed"]
+[connection signal="Editing_canceled" from="ColorMenu" to="." method="_on_Editing_canceled"]
+[connection signal="pressed" from="ColorMenu/BtnLine/CancelBtn" to="ColorMenu" method="_on_CancelBtn_pressed"]
+[connection signal="pressed" from="ColorMenu/BtnLine/ConfirmBtn" to="ColorMenu" method="_on_ConfirmBtn_pressed"]
+
+[editable path="Table/ScrollContainer/PlayerList/PlayerLine"]

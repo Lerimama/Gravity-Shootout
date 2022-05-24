@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materiali/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud/mat/progressbar_undi.png" type="Texture" id=2]
+[ext_resource path="res://hud/mat/progressbar_border.png" type="Texture" id=3]
+[ext_resource path="res://hud/mat/progressbar_pro.png" type="Texture" id=4]
+
+[node name="ProgressBar" type="HBoxContainer"]
+margin_right = 116.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="."]
+margin_right = 13.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "E"
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 19.0
+margin_right = 116.0
+margin_bottom = 17.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )

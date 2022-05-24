@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://materiali/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/configure_controller/ControllerLine.gd" type="Script" id=2]
+
+[node name="ControllerLine" type="HBoxContainer"]
+margin_right = 500.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 500, 48 )
+size_flags_horizontal = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 43.0, 24.0 ],
+"_edit_vertical_guides_": [ 1024.0, 926.0, 449.0, 400.0, 801.0 ]
+}
+
+[node name="ControllerName" type="Label" parent="."]
+margin_right = 67.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "KEYS 1"
+
+[node name="ControllerBtn" type="Button" parent="." groups=["line_btns"]]
+margin_left = 235.0
+margin_right = 408.0
+margin_bottom = 22.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "B / R / E / Z / Sp"
+flat = true
+align = 2
+
+[node name="VSeparator" type="VSeparator" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 412.0
+margin_right = 460.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 9
+size_flags_vertical = 0
+custom_constants/separation = 48
+
+[node name="DeleteControllerBtn" type="Button" parent="." groups=["line_btns"]]
+margin_left = 464.0
+margin_right = 500.0
+margin_bottom = 22.0
+size_flags_horizontal = 8
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0 )
+text = "[ - ]"
+flat = true
+
+[connection signal="pressed" from="ControllerBtn" to="." method="_on_ControllerBtn_pressed"]
+[connection signal="pressed" from="DeleteControllerBtn" to="." method="_on_DeleteControllerBtn_pressed"]
